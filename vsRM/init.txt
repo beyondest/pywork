@@ -1,0 +1,24 @@
+(& "D:\anaconda\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
+
+
+
+out_set=[]
+        out=[]
+        biggest=rec_points[0]
+        area=cv2.contourArea(biggest)
+        for i in rec_points:
+            i_area=cv2.contourArea(i)
+            if i_area>area:
+                biggest=i
+                area=i_area
+        for i in rec_points:
+            i_area=cv2.contourArea(i)
+            if i_area<area-1:
+                out_set.append(i)
+        biggest=out_set[0]
+        area=cv2.contourArea(biggest)
+        for i in out_set:
+            i_area=cv2.contourArea(i)
+            if i_area>area:
+                biggest=i
+                area=i_area
